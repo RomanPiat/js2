@@ -130,8 +130,11 @@ for (const product of products) {
 }
   return (null);
 }
- */
+ 
+console.log(getAllPropValues("price"));
 
+ */
+/* 
 const products = [
   { name: "Radar", price: 1300, quantity: 4 },
   { name: "Scanner", price: 2700, quantity: 3 },
@@ -141,20 +144,74 @@ const products = [
 
 function getAllPropValues(propName) {
 
+  let valueMas = [];
+   
   for (const product of products) {
-    console.log(Object.keys(product));
-    console.log(Object.values(product));
-
-    if (propName === Object.keys(product)) {
-      console.log(propName)
-    return (Object.values(product))
+    console.log(product);
+    if (product.hasOwnProperty(propName)) {
+      console.log(product[propName]);
+      valueMas.push(product[propName]);
+    }
   }
+  return valueMas;
 }
+
+console.log(getAllPropValues("price"));
+ */
+
+
+/* const products = [
+  { name: "Radar", price: 1300, quantity: 4 },
+  { name: "Scanner", price: 2700, quantity: 3 },
+  { name: "Droid", price: 400, quantity: 7 },
+  { name: "Grip", price: 1200, quantity: 9 },
+];
+
+function calculateTotalPrice(productName) {
+
+  for (const product of products) {
+    console.log(product);
+  if (productName === product.name) {
+    console.log(product.name)
+    return(product.price * product.quantity)
+    }
+}
+  return (0);
+
+}
+
+console.log(calculateTotalPrice("Grip"));
+ */
+
+
+/* const defaultSettings = {
+  theme: "light",
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSettings = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+
+const finalSettings = {...defaultSettings, ...overrideSettings};
+ */
+
+
+
+
+function makeTask(data) {
+  const completed = false;
+  const category = "General";
+  const priority = "Normal";
+  // Change code below this line
   
-/*   return (null); */
-
+const itog = {category, priority, completed, ...data}
+  return(itog);
+  // Change code above this line
 }
 
-
-
-console.table(getAllPropValues("quantity"));
+console.log(makeTask({ category: "Homemade", priority: "Low", text: "Take out the trash" }));
